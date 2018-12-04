@@ -62,8 +62,9 @@ class ReactionTimerGridView {
     }
   }
 
-  handleActiveCellClick() {
-    this.callbacks.handleActiveCellSelected();
+  handleActiveCellClick(event) {
+    this.activeCellEl = event.target.id.split(':');
+    this.callbacks.handleActiveCellSelected(this.activeCellEl);
   }
 }
 
