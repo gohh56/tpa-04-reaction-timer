@@ -19,11 +19,9 @@ class ReactionTimerGame {
 
   startCycle() {
     this.currentStartTime = new Date().getTime(); // milliseconds
-    for (let i = 0; i < 2; i += 1) {
-      if (this.activeCells.length > 0) {
-        const activeCell = this.activeCells.pop();
-        this.view.deactivateCell(activeCell[0], activeCell[1]);
-      }
+    while (this.activeCells.length > 0) {
+      const activeCell = this.activeCells.pop();
+      this.view.deactivateCell(activeCell[0], activeCell[1]);
     }
     for (let j = 0; j < 2; j += 1) {
       this.triggerRandomCell();
@@ -51,11 +49,6 @@ class ReactionTimerGame {
       console.log(`2nd reaction ${this.currentEndTime - this.currentStartTime}\n---`);
     }
   }
-
-  //handleRoundStartCallback() {
-  //  this.calculateOrder = 0;
-  //  this.view.registerRoundStartCallback(this.handleRoundStart.bind(this));
-  //}
 
   init() {
     this.view = new ReactionTimerGridView();

@@ -2,7 +2,6 @@ import { NUM_ROWS, NUM_COLS } from '../constants.js';
 
 class ReactionTimerGridView {
   constructor() {
-    this.activeCellEl = null;
     this.activeCellClickHandler = this.handleActiveCellClick.bind(this);
     this.callbacks = {};
   }
@@ -63,8 +62,8 @@ class ReactionTimerGridView {
   }
 
   handleActiveCellClick(event) {
-    this.activeCellEl = event.target.id.split(':');
-    this.callbacks.handleActiveCellSelected(this.activeCellEl);
+    const activeCellEl = event.target.id.split(':');
+    this.callbacks.handleActiveCellSelected(activeCellEl);
   }
 }
 
